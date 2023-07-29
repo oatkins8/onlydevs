@@ -1,7 +1,45 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+puts "Clearing database..."
+
+User.destroy_all
+Profile.destroy_all
+
+puts "Destroyed all users & profiles."
+
+admin = User.create!(first_name: "Only", last_name: "Devs", email: "admin@onlydevs.com", password: "password")
+
+puts "--Admin Account--\nEmail: admin@onlydevs.com \nPassword: password"
+puts "-----------------\n"
+
+city = ['New York', 'London']
+work_experience = [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"]
+discipline = ['Front End', 'Back End', 'Full Stack']
+tech_stack = ['Javascript', 'HTML', 'CSS', 'Ruby', 'Python', 'Java', 'PHP', 'C++']
+
+text = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "", "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"]
+
+puts "Creating users and profiles..."
+n = 0
+
+10.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  user = User.create!(first_name: first_name, last_name: last_name, email: "#{first_name.downcase}@mail.com", password: "password")
+  Profile.create!(
+    user_id: user.id,
+    name: user.first_name,
+    city: city.sample,
+    work_experience: work_experience.sample,
+    discipline: discipline.sample,
+    tech_stack: tech_stack.sample(rand(2..8)),
+    answer_one: text.sample,
+    answer_two: text.sample,
+    answer_three: text.sample,
+    answer_four: text.sample,
+    answer_five: text.sample,
+    )
+    n += 1
+end
+
+puts "Created #{n} users and profiles."
