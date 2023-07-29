@@ -10,20 +10,41 @@ puts "Destroyed all users & profiles."
 
 admin = User.create!(first_name: "Only", last_name: "Devs", email: "admin@onlydevs.com", password: "password")
 
+puts "\n"
 puts "--Admin Account--\nEmail: admin@onlydevs.com \nPassword: password"
 puts "-----------------\n"
 
-city = ['New York', 'London']
+city = ['New York', 'London', 'Singapore']
 work_experience = [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"]
 discipline = ['Front End', 'Back End', 'Full Stack']
-tech_stack = ['Javascript', 'HTML', 'CSS', 'Ruby', 'Python', 'Java', 'PHP', 'C++']
+tech_stack = %i[
+  Ruby
+  Rails
+  ViewComponent
+  PostgreSQL
+  SQLite
+  MySQL
+  Redis
+  Tailwind
+  Bootstrap
+  FactoryBot
+  RSpec
+  Minitest
+  CSS
+  Stimulus
+  Turbo
+  Heroku
+  Hatchbox.io
+  React
+]
 
 text = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "", "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"]
-
-puts "Creating users and profiles..."
 n = 0
 
-10.times do
+20.times do
+  n += 1
+  puts "Creating user #{n} and profile..."
+
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   user = User.create!(first_name: first_name, last_name: last_name, email: "#{first_name.downcase}@mail.com", password: "password")
@@ -44,7 +65,8 @@ n = 0
   file = URI.open("https://source.unsplash.com/random/300x300/?avatar")
   profile.avatar.attach(io: file, filename: "#{first_name}.png", content_type: "image/png")
   profile.save!
-  n += 1
+
 end
 
-puts "Created #{n} users and profiles."
+puts "-----------------\n"
+puts "#{n} users created."
