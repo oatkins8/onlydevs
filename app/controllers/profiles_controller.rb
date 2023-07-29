@@ -15,7 +15,9 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1
-  def show; end
+  def show
+    @profile = Profile.find(params[:id])
+  end
 
   # GET /profiles/new
   def new
