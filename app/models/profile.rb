@@ -5,6 +5,9 @@ class Profile < ApplicationRecord
 
   validates_uniqueness_of :user_id
 
+  geocoded_by :city
+  after_validation :geocode
+
   TECH_STACK_OPTIONS = %i[
     Ruby
     Rails

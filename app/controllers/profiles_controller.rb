@@ -5,6 +5,13 @@ class ProfilesController < ApplicationController
   # GET /profiles
   def index
     @profiles = Profile.all
+
+    @markers = @profiles.geocoded.map do |profile|
+      {
+        lat: profile.latitude,
+        lng: profile.longitude
+      }
+    end
   end
 
   # GET /profiles/1
