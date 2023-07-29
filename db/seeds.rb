@@ -1,4 +1,5 @@
-require 'faker'
+require "faker"
+require "open-uri"
 
 puts "Clearing database..."
 
@@ -26,7 +27,7 @@ n = 0
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   user = User.create!(first_name: first_name, last_name: last_name, email: "#{first_name.downcase}@mail.com", password: "password")
-  Profile.create!(
+  profile = Profile.new(
     user_id: user.id,
     name: user.first_name,
     city: city.sample,
@@ -39,7 +40,11 @@ n = 0
     answer_four: text.sample,
     answer_five: text.sample,
     )
-    n += 1
+  # avatar active storage
+  file = URI.open("https://source.unsplash.com/random/300x300/?avatar")
+  profile.avatar.attach(io: file, filename: "#{first_name}.png", content_type: "image/png")
+  profile.save!
+  n += 1
 end
 
 puts "Created #{n} users and profiles."
