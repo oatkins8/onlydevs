@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_113615) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "tech_stack", default: [], array: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
