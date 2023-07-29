@@ -19,25 +19,20 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
 
 
+  <div>
+    <%= form.label :work_experience, style: "display: block" %>
+    <%= form.select :work_experience, [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"], :prompt => 'Select One' %>
+  </div>
+
+  <div>
+    <%= form.label :discipline, style: "display: block" %>
+    <%= form.select :work_experience, ["Front End", 'Back End', 'Full Stack'], :prompt => 'Select One' %>
+  </div>
+  
   <% if false %>
     <div>
       <%= form.label :city, style: "display: block" %>
       <%= form.text_field :city %>
-    </div>
-
-    <div>
-      <%= form.label :work_experience, style: "display: block" %>
-      <%= form.text_field :work_experience %>
-    </div>
-
-    <div>
-      <%= form.label :location, style: "display: block" %>
-      <%= form.text_field :location %>
-    </div>
-
-    <div>
-      <%= form.label :discipline, style: "display: block" %>
-      <%= form.text_field :discipline %>
     </div>
 
     <div>
