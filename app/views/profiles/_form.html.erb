@@ -23,29 +23,29 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-
   <div>
     <%= form.label :work_experience, style: "display: block" %>
-    <%= form.select :work_experience, [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"], :prompt => 'Select One' %>
+    <%= form.select :work_experience, [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"], prompt: 'Select One' %>
   </div>
 
   <div>
     <%= form.label :discipline, style: "display: block" %>
-    <%= form.select :work_experience, ["Front End", 'Back End', 'Full Stack'], :prompt => 'Select One' %>
+    <%= form.select :discipline, ["Front End", 'Back End', 'Full Stack'], prompt: 'Select One' %>
   </div>
 
+  <% Profile::TECH_STACK_OPTIONS.each do |t| %>
+    <div>
+      <%= form.check_box("tech_stack", { multiple: true, checked: form.object.tech_stack&.include?(t.to_s) }, t, nil) %>
+      <%= form.label t %> 
+    </div>
+  <% end %>
+  
   <% if false %>
     <div>
       <%= form.label :city, style: "display: block" %>
       <%= form.text_field :city %>
     </div>
-
-    <div>
-      <%= form.label :tech_stack, style: "display: block" %>
-      <%= form.text_field :tech_stack %>
-    </div>
   <% end %>
-
 
   <div>
     <%= form.label :answer_one, style: "display: block" %>
