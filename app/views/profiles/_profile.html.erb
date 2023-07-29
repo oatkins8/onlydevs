@@ -1,56 +1,30 @@
-<div id="<%= dom_id profile %>">
-  <% if profile.avatar.attached? %>
-    <%= cl_image_tag profile.avatar.key, height: 300, width: 300, crop: :fill %>
-  <% end %>
+<%= link_to profile do %>
+  <div id="<%= dom_id profile %>" class="text-center bg-indigo-50 rounded-lg h-80 p-3 shadow-md">
+    <div class="w-7/12 h-6/12 mx-auto mb-3">
+      <% if profile.avatar.attached? %>
+        <%= cl_image_tag profile.avatar.key, height: 300, width: 300, crop: :fill, class: "rounded-full" %>
+      <% end %>
+    </div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= profile.name %>
-  </p>
+    <p class="text-2xl text-extrabold"><%= profile.name %></p>
 
-  <p>
-    <strong>City:</strong>
-    <%= profile.city %>
-  </p>
+    <p>
+      <i class="fa-solid fa-location-dot"></i>
+      <%= profile.city %>
+    </p>
 
-  <p>
-    <strong>Work experience:</strong>
-    <%= profile.work_experience %>
-  </p>
+    <p>
+      <i class="fa-solid fa-briefcase"></i>
+      <%= profile.work_experience %>
+    </p>
 
-  <p>
-    <strong>Discipline:</strong>
-    <%= profile.discipline %>
-  </p>
+    <p>
+      <i class="fa-solid fa-laptop-code"></i>
+      <%= profile.discipline %>
+    </p>
 
-  <p>
-    <strong>Tech stack:</strong>
-    <%= profile.tech_stack %>
-  </p>
-
-  <p>
-    <strong>Answer one:</strong>
-    <%= profile.answer_one %>
-  </p>
-
-  <p>
-    <strong>Answer two:</strong>
-    <%= profile.answer_two %>
-  </p>
-
-  <p>
-    <strong>Answer three:</strong>
-    <%= profile.answer_three %>
-  </p>
-
-  <p>
-    <strong>Answer four:</strong>
-    <%= profile.answer_four %>
-  </p>
-
-  <p>
-    <strong>Answer five:</strong>
-    <%= profile.answer_five %>
-  </p>
-
-</div>
+    <% profile.tech_stack.map do |stack| %>
+      <span class="bg-purple-600 text-white rounded px-1"><%= stack %></span>
+    <% end %>
+  </div>
+<% end %>
