@@ -100,6 +100,7 @@ GEM
     erubi (1.12.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -121,6 +122,9 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
+    listen (3.8.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -149,6 +153,8 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
@@ -182,6 +188,11 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_live_reload (0.3.4)
+      listen
+      nio4r
+      railties
+      websocket-driver
     railties (7.0.6)
       actionpack (= 7.0.6)
       activesupport (= 7.0.6)
@@ -190,6 +201,9 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
     redis (4.8.1)
     reline (0.3.7)
       io-console (~> 0.5)
@@ -236,6 +250,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -251,6 +266,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.6)
+  rails_live_reload
   redis (~> 4.0)
   sprockets-rails
   stimulus-rails
