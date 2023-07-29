@@ -1,10 +1,32 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @profile %>
+<div class="grid grid-cols-6 gap-4 mx-28">
+  <div>
+    <%= render @profile %>
+  </div>
+  <div class="col-span-5 bg-indigo-50 rounded-lg px-8 py-5">
+    <div class="bg-white rounded-md p-4 mb-3">
+      <p class="text-lg text-bold">Q1. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+      <p class="pl-8"><%= @profile.answer_one %></p>
+    </div>
+    <div class="bg-white rounded-md p-4 mb-3">
+      <p class="text-lg text-bold">Q2. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+      <p class="pl-8"><%= @profile.answer_two %></p>
+    </div>
+    <div class="bg-white rounded-md p-4 mb-3">
+      <p class="text-lg text-bold">Q3. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+      <p class="pl-8"><%= @profile.answer_three %></p>
+    </div>
+    <div class="bg-white rounded-md p-4 mb-3">
+      <p class="text-lg text-bold">Q4. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+      <p class="pl-8"><%= @profile.answer_four %></p>
+    </div>
+    <div class="bg-white rounded-md p-4">
+      <p class="text-lg text-bold">Q5. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+      <p class="pl-8"><%= @profile.answer_five %></p>
+    </div>
+  </div>
+  <%# <%= link_to "Edit this profile", edit_profile_path(@profile) %>
+  <%# <%= link_to "Back to profiles", profiles_path %>
 
-<div>
-  <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-  <%= link_to "Back to profiles", profiles_path %>
-
-  <%= button_to "Destroy this profile", @profile, method: :delete %>
+  <%# <%= button_to "Destroy this profile", @profile, method: :delete %>
 </div>
