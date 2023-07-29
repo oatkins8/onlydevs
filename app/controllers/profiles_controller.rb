@@ -5,6 +5,13 @@ class ProfilesController < ApplicationController
   # GET /profiles
   def index
     @profiles = Profile.all
+
+    @markers = @profiles.geocoded.map do |profile|
+      {
+        lat: profile.latitude,
+        lng: profile.longitude
+      }
+    end
   end
 
   # GET /profiles/1
@@ -53,8 +60,8 @@ class ProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profile_params
-    params.require(:profile).permit(:name, :city, :work_experience, :discipline,
-                                    :answer_one, :answer_two, :answer_three, :answer_four, :answer_five, :user_id, tech_stack: [], :avatar)
+    params.require(:profile).permit(:name, :city, :work_experience, :discipline, :avatar,
+                                    :answer_one, :answer_two, :answer_three, :answer_four, :answer_five, :user_id, tech_stack: [])
 
   end
 end
