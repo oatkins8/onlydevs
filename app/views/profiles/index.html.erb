@@ -1,19 +1,13 @@
-
-<%= button_to "sign out", destroy_user_session_path, method: :delete  %>
-
-
-
-<p style="color: green"><%= notice %></p>
-
-<h1 class="text-stone-200">Profiles</h1>
-
-<div id="profiles">
-  <% @profiles.each do |profile| %>
-    <%= render profile %>
-    <p>
-      <%= link_to "Show this profile", profile %>
-    </p>
-  <% end %>
+<div class="profile-container grid grid-cols-5 gap-4">
+  <div class="profile-search">
+    <p>Search sidebar</p>
+  </div>
+  <div id="profiles" class="grid grid-cols-4 gap-5 mx-auto border-solid col-span-4">
+    <% @profiles.each do |profile| %>
+      <%= render profile %>
+    <% end %>
+  </div>
 </div>
+
 
 <%= link_to "New profile", new_profile_path %>
