@@ -10,69 +10,72 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :avatar, style: "display: block" %>
-    <%= form.file_field :avatar %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <%= form.hidden_field :user_id, value: current_user.id %>
-
-  <div>
-    <%= form.label :work_experience, style: "display: block" %>
-    <%= form.select :work_experience, [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"], prompt: 'Select One' %>
-  </div>
-
-  <div>
-    <%= form.label :discipline, style: "display: block" %>
-    <%= form.select :discipline, ["Front End", 'Back End', 'Full Stack'], prompt: 'Select One' %>
-  </div>
-
-  <% Profile::TECH_STACK_OPTIONS.each do |t| %>
+  <div class="flex flex-col bg-indigo-50 items-center">
+    <h2>Create New Profile</h2>
     <div>
-      <%= form.check_box("tech_stack", { multiple: true, checked: form.object.tech_stack&.include?(t.to_s) }, t, nil) %>
-      <%= form.label t %> 
+      <%= form.label :avatar, style: "display: block" %>
+      <%= form.file_field :avatar %>
     </div>
-  <% end %>
-  
-  <% if false %>
+
     <div>
-      <%= form.label :city, style: "display: block" %>
-      <%= form.text_field :city %>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :answer_one, style: "display: block" %>
-    <%= form.text_area :answer_one %>
-  </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div>
-    <%= form.label :answer_two, style: "display: block" %>
-    <%= form.text_area :answer_two %>
-  </div>
+    <div>
+      <%= form.label :work_experience, style: "display: block" %>
+      <%= form.select :work_experience, [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"], prompt: 'Select One' %>
+    </div>
 
-  <div>
-    <%= form.label :answer_three, style: "display: block" %>
-    <%= form.text_area :answer_three %>
-  </div>
+    <div>
+      <%= form.label :discipline, style: "display: block" %>
+      <%= form.select :discipline, ["Front End", 'Back End', 'Full Stack'], prompt: 'Select One' %>
+    </div>
 
-  <div>
-    <%= form.label :answer_four, style: "display: block" %>
-    <%= form.text_area :answer_four %>
-  </div>
+      <div>
+        <%= form.label :tech_stacks, style: "display: block" %>
+    <% Profile::TECH_STACK_OPTIONS.each do |t| %>
+        <%= form.check_box("tech_stack", { multiple: true, checked: form.object.tech_stack&.include?(t.to_s) }, t, nil) %>
+        <%= form.label t %>
+    <% end %>
+      </div>
 
-  <div>
-    <%= form.label :answer_five, style: "display: block" %>
-    <%= form.text_area :answer_five %>
-  </div>
+    <% if false %>
+      <div>
+        <%= form.label :city, style: "display: block" %>
+        <%= form.text_field :city %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.label :answer_one, style: "display: block" %>
+      <%= form.text_area :answer_one %>
+    </div>
+
+    <div>
+      <%= form.label :answer_two, style: "display: block" %>
+      <%= form.text_area :answer_two %>
+    </div>
+
+    <div>
+      <%= form.label :answer_three, style: "display: block" %>
+      <%= form.text_area :answer_three %>
+    </div>
+
+    <div>
+      <%= form.label :answer_four, style: "display: block" %>
+      <%= form.text_area :answer_four %>
+    </div>
+
+    <div>
+      <%= form.label :answer_five, style: "display: block" %>
+      <%= form.text_area :answer_five %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
