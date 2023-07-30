@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[edit update destroy]
   before_action :set_profile, only: %i[show edit update destroy]
 
   # GET /profiles
@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
     params.delete_if { |key, _| params[key] == 'Any'}
     @profiles = Profile.filter(params.slice(:discipline, :work_experience))
-    
+
     if params[:city].present?
       near = Profile.near(params[:city], params[:radius].to_i, units: :km)
       @profiles = @profiles.select { |profile| near.include?(profile) }
