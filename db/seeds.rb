@@ -14,7 +14,7 @@ puts "\n"
 puts "--Admin Account--\nEmail: admin@onlydevs.com \nPassword: password"
 puts "-----------------\n"
 
-city = ['New York', 'London', 'Singapore']
+city = ['New York', 'London', 'Singapore', 'Milan', 'Paris', 'Montreal', 'Amsterdam']
 work_experience = [ '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', "10+ years"]
 discipline = ['Front End', 'Back End', 'Full Stack']
 tech_stack = %i[
