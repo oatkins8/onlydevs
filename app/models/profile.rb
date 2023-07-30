@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   include Filterable
   belongs_to :user
+  has_many :questions
   has_one_attached :avatar
 
   scope :discipline, -> (discipline) {where(discipline: discipline)}
