@@ -1,0 +1,33 @@
+<%= form_with url: root_path, local: true, method: :get do |f| %>
+   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="bg-white py-8 my-2 px-6 shadow rounded-lg sm:px-10">
+
+         <div class="my-3">
+            <%= f.label "Discipline", class: "block font-medium text-gray-700" %>
+            <%= f.select(:discipline,
+               ["Any", "Front End", 'Back End', 'Full Stack'],
+               value: params[:discipline]
+            ) %>
+         </div>
+         <div class="my-3">
+            <%= f.label "Work experience", class: "block font-medium text-gray-700"%>
+            <%= f.select(:work_experience,
+               ['Any', '< 1 year', '1 - 2 years', '3 - 4 years', '4 - 5 years', '5 - 10 years', '10+ years'],
+               value: params[:work_experience]
+            ) %>
+         </div>
+         <div class="my-3">
+            <%= f.label "City", class: "block font-medium text-gray-700" %>
+            <%= f.text_field :city, placeholder: "e.g. London, UK", value: params[:city] %>
+         </div>
+         <div >
+            <label class="block text-sm font-medium text-gray-700">Radius</label>
+            <input type="range" min="10" max="100" value="10" name="radius" step="10" oninput="this.nextElementSibling.value = this.value + 'km'" class="form-range appearance-none w-full h-6 p-0 bg-transparen focus:shadow-none"/>
+            <output class="block font-medium text-gray-700">1km</output>
+         </div>
+         <div class="my-3">
+            <%= f.submit "search" %>
+         </div>
+      </div>
+   </div>
+<% end %>
