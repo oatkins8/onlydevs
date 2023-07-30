@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @answer = Answer.new
   end

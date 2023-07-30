@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def new
     @user = User.find(params[:user_id])
