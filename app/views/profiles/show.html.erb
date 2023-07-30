@@ -48,16 +48,31 @@
     <div class="hidden p-4 rounded-lg" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
         <p class="text-sm text-gray-500 dark:text-gray-400">
           <%= render 'questions/form', question: @question %>
-          <% @profile.questions.each do |question| %>
-            <div class="bg-white rounded-md p-4 mb-3">
-              <p class="text-lg text-bold">Q. <%= question.content %></p>
-              <!-- Display answers to this question -->
-              <% question.answers.each do |answer| %>
-                <p class="pl-8"><%= answer.content %></p>
-              <% end %>
-            <%= render 'answers/form', answer: @answer, question: question %>
-            </div>
-          <% end %>
+          <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 dark:text-white" data-inactive-classes="text-gray-900 dark:text-gray-400">
+            <% @profile.questions.each_with_index do |question, index| %>
+              <div class="bg-white rounded-md p-4 mb-3">
+                <h2 id="accordion-flush-heading-<%= index + 1 %>">
+                  <button type="button" class="flex items-center justify-between w-full bg-white rounded-md font-medium text-left text-gray-900" data-accordion-target="#accordion-flush-body-<%= index + 1 %>" aria-expanded="false" aria-controls="accordion-flush-body-<%= index + 1 %>">
+                    <p class="text-lg text-bold">Q. <%= question.content %></p>
+                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                    </svg>
+                  </button>
+                </h2>
+                <div id="accordion-flush-body-<%= index + 1 %>" class="hidden" aria-labelledby="accordion-flush-heading-<%= index + 1 %>">
+                  <div class="">
+                    <% question.answers.each do |answer| %>
+                      <p class="pl-5 my-2 text-gray-900 dark:text-gray-400">
+                        <i class="fa-solid fa-reply fa-rotate-180"></i>
+                        <%= answer.content %>
+                      </p>
+                    <% end %>
+                    <%= render 'answers/form', answer: @answer, question: question %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </p>
     </div>
   </div>
