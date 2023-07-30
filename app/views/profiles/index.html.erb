@@ -1,8 +1,7 @@
-<div class="profile-container grid grid-cols-5 gap-4">
+<div class="profile-container grid grid-cols-5 gap-10">
   <div class="profile-search">
-    <p>Search Devs</p>
     <%= render "profile_search" %>
- 
+
   </div>
   <div id="profiles" class="grid grid-cols-4 gap-5 mx-auto border-solid col-span-4">
     <% @profiles.each do |profile| %>
