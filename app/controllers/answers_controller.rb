@@ -9,9 +9,9 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.new(answer_params)
     @answer.question = @question
     if @answer.save
-      redirect_to @profile, notice: 'Answer was successfully created.'
+      redirect_to profile_path(@profile), notice: 'Answer was successfully created.'
     else
-      redirect_to @profile, alert: 'Failed to create answer.'
+      redirect_to profile_path(@profile), alert: 'Failed to create answer.'
     end
   end
 
