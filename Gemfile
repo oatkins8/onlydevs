@@ -72,3 +72,4 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem "rails_live_reload"
 gem "geocoder"
+gem 'simple_form'
