@@ -3,8 +3,10 @@ require "open-uri"
 
 puts "Clearing database..."
 
-User.destroy_all
+Answer.destroy_all
+Question.destroy_all
 Profile.destroy_all
+User.destroy_all
 
 puts "Destroyed all users & profiles."
 
