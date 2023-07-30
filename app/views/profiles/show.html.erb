@@ -1,29 +1,60 @@
-
 <div class="grid grid-cols-6 gap-4 mx-28">
   <div>
     <%= render @profile %>
   </div>
   <div class="col-span-5 bg-indigo-50 rounded-lg px-8 py-5">
-    <div class="bg-white rounded-md p-4 mb-3">
-      <p class="text-lg text-bold">Q1. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-      <p class="pl-8"><%= @profile.answer_one %></p>
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
+        </li>
+    </ul>
+  </div>
+  <div id="myTabContent">
+    <div class="hidden p-4 rounded-lg" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        <div class="bg-white rounded-md p-4 mb-3">
+          <p class="text-lg text-bold">Q1. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p class="pl-8"><%= @profile.answer_one %></p>
+        </div>
+        <div class="bg-white rounded-md p-4 mb-3">
+          <p class="text-lg text-bold">Q2. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p class="pl-8"><%= @profile.answer_two %></p>
+        </div>
+        <div class="bg-white rounded-md p-4 mb-3">
+          <p class="text-lg text-bold">Q3. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p class="pl-8"><%= @profile.answer_three %></p>
+        </div>
+        <div class="bg-white rounded-md p-4 mb-3">
+          <p class="text-lg text-bold">Q4. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p class="pl-8"><%= @profile.answer_four %></p>
+        </div>
+        <div class="bg-white rounded-md p-4">
+          <p class="text-lg text-bold">Q5. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p class="pl-8"><%= @profile.answer_five %></p>
+        </div>
+      </p>
     </div>
-    <div class="bg-white rounded-md p-4 mb-3">
-      <p class="text-lg text-bold">Q2. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-      <p class="pl-8"><%= @profile.answer_two %></p>
+    <div class="hidden p-4 rounded-lg" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          <%= render 'questions/form', question: @question %>
+          <% @profile.questions.each do |question| %>
+            <div class="bg-white rounded-md p-4 mb-3">
+              <p class="text-lg text-bold">Q. <%= question.content %></p>
+              <!-- Display answers to this question -->
+              <% question.answers.each do |answer| %>
+                <p class="pl-8"><%= answer.content %></p>
+              <% end %>
+            <%= render 'answers/form', answer: @answer, question: question %>
+            </div>
+          <% end %>
+        </p>
     </div>
-    <div class="bg-white rounded-md p-4 mb-3">
-      <p class="text-lg text-bold">Q3. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-      <p class="pl-8"><%= @profile.answer_three %></p>
-    </div>
-    <div class="bg-white rounded-md p-4 mb-3">
-      <p class="text-lg text-bold">Q4. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-      <p class="pl-8"><%= @profile.answer_four %></p>
-    </div>
-    <div class="bg-white rounded-md p-4">
-      <p class="text-lg text-bold">Q5. Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-      <p class="pl-8"><%= @profile.answer_five %></p>
-    </div>
+  </div>
+
   </div>
   <%# <%= link_to "Edit this profile", edit_profile_path(@profile) %>
   <%# <%= link_to "Back to profiles", profiles_path %>

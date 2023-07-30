@@ -1,0 +1,6 @@
+<%= form_with(model: question, url: profile_questions_path(@profile)) do |form| %>
+  <div class="flex bg-white rounded-md h-fit items-center justify-between mb-10 border-solid border-purple-700">
+    <%= form.text_area :content, placeholder: "Ask a question...", class: "form-control w-full border-none rounded-md" %>
+    <%= form.submit "Submit", class: "btn btn-primary p-3" %>
+  </div>
+<% end %>
