@@ -1,0 +1,30 @@
+<div class="container chatroom">
+  <div>
+    <%= link_to "Back to #{@chatroom.profile.user.first_name}'s profile", profile_path(@chatroom.profile) %> |
+    <%= link_to "Back to profiles", profiles_path %>
+  </div>
+  <h1>Chat with <%= @chatroom.profile.user.first_name %></h1>
+
+  <div class="messages">
+    <% @chatroom.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.user.first_name %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@chatroom, @message],
+    html: {class: ""} do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Send a messsage",
+      wrapper_html: {class: ""}
+    %>
+    <%= f.submit "Send" %>
+  <% end %>
+</div>

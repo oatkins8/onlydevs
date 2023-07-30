@@ -2,6 +2,7 @@ class Profile < ApplicationRecord
   include Filterable
   belongs_to :user
   has_one_attached :avatar
+  has_many :chatrooms
 
   scope :discipline, -> (discipline) {where(discipline: discipline)}
   scope :work_experience, -> (work_experience) {where(work_experience: work_experience)}
