@@ -2,7 +2,7 @@
   <div>
     <%= render @profile %>
     <div class="mt-5 text-center bg-indigo-100 rounded-md shadow-md p-1">
-      <% if @profile.user_id == current_user.id %>
+      <% if current_user.present? && @profile.user_id == current_user.id %>
         <%= link_to "Edit this profile", edit_profile_path(@profile) %>
         <%= button_to "Destroy this profile", @profile, method: :delete %>
       <% end %>
