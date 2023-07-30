@@ -37,8 +37,10 @@
       <p class="pl-8"><%= @profile.answer_five %></p>
     </div>
   </div>
-  <%# <%= link_to "Edit this profile", edit_profile_path(@profile) %>
-  <%# <%= link_to "Back to profiles", profiles_path %>
 
-  <%# <%= button_to "Destroy this profile", @profile, method: :delete %>
+  <% if @profile.user_id == current_user.id %>
+    <%= link_to "Edit this profile", edit_profile_path(@profile) %>
+    <%= button_to "Destroy this profile", @profile, method: :delete %>
+  <% end %>
+    <%= link_to "Back to profiles", profiles_path %>
 </div>

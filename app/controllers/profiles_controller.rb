@@ -5,13 +5,19 @@ class ProfilesController < ApplicationController
   # GET /profiles
   def index
     @profiles = Profile.all
-
-    @markers = @profiles.geocoded.map do |profile|
-      {
-        lat: profile.latitude,
-        lng: profile.longitude
-      }
+    params.delete_if { |key, _| params[key] == 'Any'}
+    @profiles = Profile.filter(params.slice(:discipline, :work_experience))
+    
+    if params[:city].present?
+      near = Profile.near(params[:city], params[:radius].to_i, units: :km)
+      @profiles = @profiles.select { |profile| near.include?(profile) }
     end
+    # @markers = @profiles.geocoded.map do |profile|
+    #   {
+    #     lat: profile.latitude,
+    #     lng: profile.longitude
+    #   }
+    # end
   end
 
   # GET /profiles/1
