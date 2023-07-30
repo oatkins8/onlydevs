@@ -24,11 +24,18 @@
 
   <body class="m-2">
     <%= render "shared/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <div class="mx-9">
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
   </body>
+  <script type="text/javascript">
+    setTimeout(function() {
+      const alert_div = document.querySelector('.alert')
+      if (alert_div) {
+        alert_div.style.display= "none"
+      }
+    }, 3000)
+  </script>
 </html>
