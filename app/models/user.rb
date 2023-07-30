@@ -5,6 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile
-  has_many :chatrooms
-  has_many :messages
 end

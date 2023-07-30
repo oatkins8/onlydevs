@@ -23,11 +23,6 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   def show
     @profile = Profile.find(params[:id])
-    if @profile.chatrooms.where(user: current_user).empty?
-      @chatroom = Chatroom.new
-    else
-      @chatroom = Chatroom.where(user: current_user).first
-    end
   end
 
   # GET /profiles/new
