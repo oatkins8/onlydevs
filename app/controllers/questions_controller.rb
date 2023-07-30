@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     @question = @profile.questions.new(content: params[:content])
     @question.user = current_user
     if @question.save
-      redirect_to @profile, notice: 'Question was successfully submitted.'
+      redirect_to profile_path(@profile), notice: 'Question was successfully submitted.'
     else
       render :new, status: :unprocessable_entity
     end
