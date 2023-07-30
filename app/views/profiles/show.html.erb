@@ -1,6 +1,13 @@
 <div class="grid grid-cols-6 gap-4 mx-28">
   <div>
     <%= render @profile %>
+    <div class="mt-5 text-center bg-indigo-100 rounded-md shadow-md p-1">
+      <% if @profile.user_id == current_user.id %>
+        <%= link_to "Edit this profile", edit_profile_path(@profile) %>
+        <%= button_to "Destroy this profile", @profile, method: :delete %>
+      <% end %>
+        <%= link_to "Back to profiles", profiles_path %>
+    </div>
   </div>
   <div class="col-span-5 bg-indigo-50 rounded-lg px-8 py-5">
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
@@ -55,9 +62,4 @@
     </div>
   </div>
 
-  <% if @profile.user_id == current_user.id %>
-    <%= link_to "Edit this profile", edit_profile_path(@profile) %>
-    <%= button_to "Destroy this profile", @profile, method: :delete %>
-  <% end %>
-    <%= link_to "Back to profiles", profiles_path %>
 </div>
