@@ -6,9 +6,7 @@
   </div>
   <div id="profiles" class="grid grid-cols-4 gap-5 mx-auto border-solid col-span-4">
     <% @profiles.each do |profile| %>
-      <%= link_to profile do %>
-        <%= render profile %>
-      <% end %>
+      <%= render profile %>
     <% end %>
   </div>
 </div>

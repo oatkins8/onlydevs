@@ -2,18 +2,6 @@
 <div class="grid grid-cols-6 gap-4 mx-28">
   <div>
     <%= render @profile %>
-    <% if @profile.chatrooms.where(user: current_user).empty?  %>
-      <div>
-        <%= simple_form_for @chatroom, html: { class: "text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white my-5 py-2 px-4 border border-blue-500 hover:border-transparent rounded" } do |f| %>
-          <%= f.hidden_field :profile_id, value: @profile.id %>
-          <%= f.button :submit, "Chat with #{@profile.name}" %>
-        <% end %>
-      </div>
-    <% else %>
-      <button class="w-auto text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white my-5 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-        <%= link_to "Chat with #{@profile.name}", chatroom_path(@chatroom) %>
-      </button>
-    <% end %>
   </div>
   <div class="col-span-5 bg-indigo-50 rounded-lg px-8 py-5">
     <div class="bg-white rounded-md p-4 mb-3">
